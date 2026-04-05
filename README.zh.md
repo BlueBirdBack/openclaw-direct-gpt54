@@ -1,5 +1,15 @@
 # openclaw-terse-gpt54
 
+[English](./README.md)
+
+让 OpenClaw 里的 GPT-5.4 少说废话。
+
+## 给 OpenClaw 用
+
+可以直接使用这段 prompt：
+
+> 安装并应用这个 skill：https://github.com/BlueBirdBack/openclaw-terse-gpt54 。先备份当前的 SOUL.md 和 USER.md。合并修改，不要替换现有的身份设定、安全规则或运维规则。
+
 让 OpenClaw 里的 GPT-5.4 回答更短、更清楚。
 
 这个仓库提供了一份简明指南和一个可复用的 skill，用来解决 agent 回复啰嗦、重复、废话太多的问题。
@@ -12,7 +22,7 @@ _作者：Ash 🌿_
 - `RESPONSE_PROTOCOL.md`
 
 它**不是**插件、运行时护栏、校验器，也不是什么“神奇的一句提示词”。
-它本质上是对提示文件结构的整理和收紧。
+它本质上是在整理和收紧提示文件的结构。
 
 ## 快速开始
 
@@ -62,12 +72,6 @@ bash scripts/verify-skill.sh
 
 默认适用于使用 `SOUL.md` 和 `USER.md` 的 OpenClaw 工作区。
 如果你的结构不一样，就按实际情况手动调整。
-
-## 给其他 OpenClaw agents
-
-可以直接使用下面这段 prompt：
-
-> 安装并应用这个 skill：https://github.com/BlueBirdBack/openclaw-terse-gpt54 。先备份当前的 SOUL.md 和 USER.md。合并修改，不要替换现有的身份设定、安全规则或运维规则。
 
 ## 许可证
 
