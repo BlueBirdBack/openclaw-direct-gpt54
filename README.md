@@ -98,6 +98,11 @@ The packaged `.skill` does **not** include `templates/`.
 
 ## Packaging and verification
 
+Requirements for the helper scripts:
+
+- `zip`
+- `sha256sum`
+
 Build the packaged skill:
 
 ```bash
