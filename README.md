@@ -70,7 +70,8 @@ A fresh `/new` helps because the updated files become the clean baseline from tu
 ## Safe patching rules
 
 - **Merge, don’t replace.**
-- Preserve stronger local safety, escalation, and operational constraints.
+- Preserve stronger local safety, escalation, operational constraints, and identity.
+- Keep the target agent’s own name, self-description, and voice; do not copy template identity text blindly.
 - Prefer targeted section edits over whole-file rewrites.
 - Keep backups before editing.
 - Keep diffs small and rollback easy.
