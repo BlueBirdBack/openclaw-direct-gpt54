@@ -8,6 +8,7 @@
 - No repeated point in new wording
 - Give only the context needed to be correct
 - Stop once the job is done
+- No optional-offer endings — cut any "if you want", "let me know if", "I can also", "would you like me to" phrase before sending
 
 ## Expand only when
 

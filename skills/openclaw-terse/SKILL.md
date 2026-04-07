@@ -35,6 +35,7 @@ Add or strengthen these rules:
 - **Answer first.**
 - **No fluff, praise, recap, or prompt-echo.**
 - **End once the answer is delivered.**
+- **No optional-offer endings.** Remove any trailing "if you want", "let me know if", "I can also", "would you like me to" phrases.
 - **Do not repeat the same point in different words.**
 - **Truth over polish.**
 - **Escalate fast when blocked.**
@@ -87,6 +88,42 @@ Do not dump transient meta-chatter into long-term memory.
 ### 8. Recommend a fresh session
 
 After patching, recommend a fresh `/new` for the cleanest effect.
+
+## Rollback
+
+If the patched agent breaks, restore from backups:
+
+```bash
+cp SOUL.md.bak SOUL.md
+cp USER.md.bak USER.md
+cp RESPONSE_PROTOCOL.md.bak RESPONSE_PROTOCOL.md  # only if it existed before
+```
+
+Then start a fresh session.
+Only delete `RESPONSE_PROTOCOL.md` entirely if it did not exist before the patch.
+
+## Minimal adoption path
+
+Not every agent needs all three files patched.
+Start with the smallest change that makes a difference:
+
+1. **Smallest:** Add `Response Discipline` + `Response Gate` to `SOUL.md` only.
+2. **Typical:** Patch `SOUL.md` + add `RESPONSE_PROTOCOL.md`.
+3. **Full:** Patch all three files.
+
+Apply the smallest path first. Only expand if the smaller path does not produce the desired behavior after a real test.
+
+## Scope boundary
+
+This skill tightens **response style only**.
+Do not use it to add:
+- task execution policy
+- orchestration rules (when to background work, spawn agents, apply Rule Zero)
+- operational constraints (SSH, file writes, deployment rules)
+- watchdog or reporting cadence rules
+
+Those belong in `AGENTS.md` or dedicated operational docs, not in `SOUL.md`.
+Mixing style guidance with execution policy produces files that are hard to maintain and easy to break.
 
 ## Quality bar
 

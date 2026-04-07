@@ -29,6 +29,28 @@ It is prompt-file structure.
 3. Start a fresh session.
 4. Test a few real prompts.
 
+## Minimal adoption path
+
+Not every agent needs all three files patched.
+Start small:
+
+1. **Smallest:** Add `Response Discipline` + `Response Gate` to `SOUL.md` only.
+2. **Typical:** Patch `SOUL.md` + add `RESPONSE_PROTOCOL.md`.
+3. **Full:** Patch all three files.
+
+Test after each step. Only expand if the smaller change is not enough.
+
+## Rollback
+
+```bash
+cp SOUL.md.bak SOUL.md
+cp USER.md.bak USER.md
+cp RESPONSE_PROTOCOL.md.bak RESPONSE_PROTOCOL.md  # only if it existed before
+```
+
+Then start a fresh session to flush old context.
+Only delete `RESPONSE_PROTOCOL.md` entirely if it did not exist before the patch.
+
 ## Rules that matter
 
 - answer first
