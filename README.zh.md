@@ -2,41 +2,27 @@
 
 [English](./README.md)
 
-让 OpenClaw 里的 GPT-5.4 少说废话。
+让 OpenClaw 里的 GPT-5.4 回答更短、更清楚、更直接。
 
 ## 给 OpenClaw 用
 
 可以直接使用这段 prompt：
 
-> 安装并应用这个 skill：https://github.com/BlueBirdBack/openclaw-direct-gpt54 。先备份当前的 SOUL.md 和 USER.md。合并修改，不要替换现有的身份设定、安全规则或运维规则。
+> 安装并应用这个 skill 的最新版本：https://github.com/BlueBirdBack/openclaw-direct-gpt54 。先备份我当前的 `SOUL.md` 和 `USER.md`。合并修改，不要替换我的身份设定、安全规则或运维规则。
 
-让 OpenClaw 里的 GPT-5.4 回答更短、更清楚。
-
-这个仓库提供 prompt-side 指南、可复用的 skill，以及 GPT-5.4 相关的参考模式，用来解决 agent 回复啰嗦、重复、废话太多的问题。
-
-_作者：Ash 🌿_
-
-它主要通过收紧这几个文件来生效：
+这个 skill 主要通过收紧这几个文件来生效：
 - `SOUL.md`
 - `USER.md`
 - `RESPONSE_PROTOCOL.md`
 
-它**不是**插件、运行时护栏、校验器，也不是什么“神奇的一句提示词”。
-它本质上是在整理和收紧提示文件的结构。
+它是提示文件层面的指导，不是插件，也不是运行时护栏。
+如果 GPT-5.4 在应用后仍然会漏出 `If you want, I can...`，那就还需要单独的运行时修复。
 
-## 快速开始（默认路径）
+## 更新这个 skill
 
-1. 优先安装打包好的 `dist/openclaw-terse.skill`。
-2. 按 skill 指引去合并修改本地 `SOUL.md`、`USER.md` 和 `RESPONSE_PROTOCOL.md`。
-3. 开一个新会话。
-4. 用几个真实问题测试效果。
+再次使用同一段 prompt：
 
-## 手动路径（不直接安装 skill 时）
-
-1. 先备份 `SOUL.md` 和 `USER.md`。
-2. 用 `templates/` 里的示例去补丁式修改 `SOUL.md`、`USER.md` 和 `RESPONSE_PROTOCOL.md`。
-3. 开一个新会话。
-4. 用几个真实问题测试效果。
+> 安装并应用这个 skill 的最新版本：https://github.com/BlueBirdBack/openclaw-direct-gpt54 。先备份我当前的 `SOUL.md` 和 `USER.md`。合并修改，不要替换我的身份设定、安全规则或运维规则。
 
 ## 真正重要的规则
 
@@ -59,62 +45,12 @@ _作者：Ash 🌿_
 
 > 已创建 `docs/project-x.md`，并已把它链接到 `Projects.md`。
 
-差别看起来很小，但摩擦是真实的。
-凡是任务已经直接暗含的内部收尾，应该先做完，再回复；不要把这种小决定重新丢回给用户。
-
-## GPT-5.4 现实检查
-
-收紧 prompt 能提高概率，但对 GPT-5.4 来说，这不是硬修复。
-这份仓库本身提供的是 prompt-side 指南和可复用的 skill / reference patterns，不直接附带运行时 rewrite gate 实现。
-如果 GPT-5.4 仍然会漏出 `If you want, I can...` 这一类权限提问，最好再配一个很窄的运行时重写门：
-
-- 检测 opt-in permission closer
-- 只在“直接 implied 的低风险内部收尾”时触发
-- 只重写一次，改成“已经做完”的表述
-- 对破坏性、对外/公开、不可逆、或确实有歧义的后续动作绝不触发
-
-紧凑模式见 `skills/openclaw-terse/references/gpt54-mitigation.md`。
-
 ## 安全修改原则
 
-- 合并修改，不要整文件替换
+- 合并修改，不要替换
 - 保留本地更强的安全规则和运维规则
 - 保留目标 agent 自己的名字、身份和语气
-- 优先做小范围修改，不要整文件重写
-- 先备份，方便随时回滚
-
-## 仓库名和 skill 名为什么不一样
-
-- 仓库名现在是 `openclaw-direct-gpt54`
-- 但打包出来的 skill 名和目录名目前仍然是 `openclaw-terse` / `openclaw-terse.skill`
-- 这是兼容现有引用、已有包名和现有触发方式的保守做法，不代表仓库里还有另一套内容
-
-## 仓库里有什么
-
-- `templates/` — 本地文件可直接参考的示例
-- `skills/openclaw-terse/` — skill 源文件（skill 名目前仍是 `openclaw-terse`）
-- `dist/openclaw-terse.skill` — 打包好的 skill
-
-打包出来的 `.skill` 包含：
-- `openclaw-terse/SKILL.md`
-- `openclaw-terse/references/patch-patterns.md`
-- `openclaw-terse/references/gpt54-mitigation.md`
-
-## 构建 / 校验
-
-需要：
-- `zip`
-- `sha256sum`
-
-```bash
-bash scripts/build-skill.sh
-bash scripts/verify-skill.sh
-```
-
-## 兼容性
-
-默认适用于使用 `SOUL.md` 和 `USER.md` 的 OpenClaw 工作区。
-如果你的结构不一样，就按实际情况手动调整。
+- 先备份，方便回滚
 
 ## 许可证
 
