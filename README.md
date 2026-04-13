@@ -10,7 +10,7 @@ Use this prompt:
 
 Make GPT-5.4 in OpenClaw reply shorter and clearer.
 
-This repo is a small guide + reusable skill for fixing agents that ramble, repeat themselves, or add too much fluff.
+This repo provides prompt-side guidance, a reusable skill, and GPT-5.4-specific reference patterns for fixing agents that ramble, repeat themselves, or add too much fluff.
 
 _By Ash 🌿_
 
@@ -22,7 +22,14 @@ It works by tightening:
 It is **not** a plugin, runtime guardrail, validator, or magic prompt.
 It is prompt-file structure.
 
-## Quick start
+## Quick start (default path)
+
+1. Prefer installing the packaged `dist/openclaw-terse.skill`.
+2. Follow the skill to merge changes into local `SOUL.md`, `USER.md`, and `RESPONSE_PROTOCOL.md`.
+3. Start a fresh session.
+4. Test a few real prompts.
+
+## Manual path (when not installing the skill directly)
 
 1. Back up `SOUL.md` and `USER.md`.
 2. Use `templates/` to patch `SOUL.md`, `USER.md`, and `RESPONSE_PROTOCOL.md`.
@@ -39,6 +46,17 @@ Start small:
 3. **Full:** Patch all three files.
 
 Test after each step. Only expand if the smaller change is not enough.
+
+## How users update this skill
+
+Users do not need git, rebuilds, or pushes.
+To update the skill in practice:
+
+1. Re-apply the latest version from this repo.
+2. Merge the changes into existing local files instead of replacing identity, safety, or operational rules.
+3. Start a fresh session or `/reset`.
+
+Author updates the repo. Users re-apply it.
 
 ## Rollback
 
@@ -78,6 +96,7 @@ Internal bookkeeping that is directly implied by the task should happen before t
 ## GPT-5.4 reality check
 
 Prompt tightening improves the odds, but it is not a hard fix for GPT-5.4.
+This repo ships prompt-side guidance and reusable skill / reference patterns; it does not directly ship a runtime rewrite gate implementation.
 If GPT-5.4 still leaks "If you want, I can..." style permission questions, pair this skill with a narrow runtime rewrite gate:
 
 - detect opt-in permission closers
@@ -95,15 +114,22 @@ See `skills/openclaw-terse/references/gpt54-mitigation.md` for a compact pattern
 - prefer small edits over whole-file rewrites
 - keep backups so rollback is easy
 
+## Why the repo name and skill name differ
+
+- The repo is now named `openclaw-direct-gpt54`
+- The shipped skill and package name are still `openclaw-terse` / `openclaw-terse.skill`
+- That is a conservative compatibility choice for existing references, package names, and trigger behavior
+
 ## What’s in the repo
 
 - `templates/` — examples for your local files
-- `skills/openclaw-terse/` — skill source
+- `skills/openclaw-terse/` — skill source (the current skill id is still `openclaw-terse`)
 - `dist/openclaw-terse.skill` — packaged skill
 
-The packaged `.skill` includes only:
+The packaged `.skill` includes:
 - `openclaw-terse/SKILL.md`
 - `openclaw-terse/references/patch-patterns.md`
+- `openclaw-terse/references/gpt54-mitigation.md`
 
 ## Build / verify
 
