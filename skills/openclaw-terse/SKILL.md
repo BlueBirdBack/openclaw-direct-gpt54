@@ -36,7 +36,8 @@ Add or strengthen these rules:
 - **No fluff, praise, recap, or prompt-echo.**
 - **End once the answer is delivered.**
 - **No optional-offer endings.** Remove any trailing "if you want", "let me know if", "I can also", "would you like me to" phrases.
-- **Do obvious low-risk internal bookkeeping automatically after the main task.**
+- **Never ask permission for directly implied low-risk internal bookkeeping after the main task. Do it, then report it.**
+- **If you created a durable artifact that obviously belongs in an index or tracker, update that index or tracker before replying.**
 - **Ask only when the follow-up is destructive, external/public, or genuinely ambiguous.**
 - **Do not repeat the same point in different words.**
 - **Truth over polish.**
@@ -58,6 +59,9 @@ Put these in `USER.md` instead:
 
 ### 5. Create or tighten `RESPONSE_PROTOCOL.md`
 
+Encode a post-task completion gate, not just a style preference.
+This should catch the exact bad pattern from issue #9: finishing the main task, then asking permission for tiny internal cleanup that was already implied.
+
 Create a compact reply checklist file.
 If it already exists, merge into it instead of flattening it.
 Keep it short.
@@ -66,7 +70,9 @@ It should define in the checklist:
 - answer in the first line
 - default to 1 short paragraph or 3-5 bullets
 - no intro or filler
-- do obvious low-risk internal bookkeeping automatically after the main task
+- never ask permission for directly implied low-risk internal bookkeeping after the main task
+- if you created a durable artifact that obviously belongs in an index or tracker, update it before replying
+- if you are about to write "if you want, I can ..." for tiny internal cleanup, stop and do that cleanup instead
 - ask only when the follow-up is destructive, external/public, or genuinely ambiguous
 - trim pass before send
 - stop once the job is done
@@ -138,6 +144,7 @@ Good result:
 - less repetition
 - clearer first-line answers
 - fewer unnecessary bullets
+- fewer pointless permission questions after the main task is already done
 
 Bad result:
 - personality flattened into robotic bark
@@ -146,5 +153,5 @@ Bad result:
 
 ## Reference
 
-Read `references/patch-patterns.md` when you need copy-ready wording.
+Read `references/patch-patterns.md` when you need copy-ready wording and concrete bad/good examples.
 Adapt it conservatively to the existing local files.
