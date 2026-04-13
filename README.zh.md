@@ -12,7 +12,7 @@
 
 让 OpenClaw 里的 GPT-5.4 回答更短、更清楚。
 
-这个仓库提供了一份简明指南和一个可复用的 skill，用来解决 agent 回复啰嗦、重复、废话太多的问题。
+这个仓库提供 prompt-side 指南、可复用的 skill，以及 GPT-5.4 相关的参考模式，用来解决 agent 回复啰嗦、重复、废话太多的问题。
 
 _作者：Ash 🌿_
 
@@ -24,7 +24,14 @@ _作者：Ash 🌿_
 它**不是**插件、运行时护栏、校验器，也不是什么“神奇的一句提示词”。
 它本质上是在整理和收紧提示文件的结构。
 
-## 快速开始
+## 快速开始（默认路径）
+
+1. 优先安装打包好的 `dist/openclaw-terse.skill`。
+2. 按 skill 指引去合并修改本地 `SOUL.md`、`USER.md` 和 `RESPONSE_PROTOCOL.md`。
+3. 开一个新会话。
+4. 用几个真实问题测试效果。
+
+## 手动路径（不直接安装 skill 时）
 
 1. 先备份 `SOUL.md` 和 `USER.md`。
 2. 用 `templates/` 里的示例去补丁式修改 `SOUL.md`、`USER.md` 和 `RESPONSE_PROTOCOL.md`。
@@ -58,6 +65,7 @@ _作者：Ash 🌿_
 ## GPT-5.4 现实检查
 
 收紧 prompt 能提高概率，但对 GPT-5.4 来说，这不是硬修复。
+这份仓库本身提供的是 prompt-side 指南和可复用的 skill / reference patterns，不直接附带运行时 rewrite gate 实现。
 如果 GPT-5.4 仍然会漏出 `If you want, I can...` 这一类权限提问，最好再配一个很窄的运行时重写门：
 
 - 检测 opt-in permission closer
@@ -75,15 +83,22 @@ _作者：Ash 🌿_
 - 优先做小范围修改，不要整文件重写
 - 先备份，方便随时回滚
 
+## 仓库名和 skill 名为什么不一样
+
+- 仓库名现在是 `openclaw-direct-gpt54`
+- 但打包出来的 skill 名和目录名目前仍然是 `openclaw-terse` / `openclaw-terse.skill`
+- 这是兼容现有引用、已有包名和现有触发方式的保守做法，不代表仓库里还有另一套内容
+
 ## 仓库里有什么
 
 - `templates/` — 本地文件可直接参考的示例
-- `skills/openclaw-terse/` — skill 源文件
+- `skills/openclaw-terse/` — skill 源文件（skill 名目前仍是 `openclaw-terse`）
 - `dist/openclaw-terse.skill` — 打包好的 skill
 
-打包出来的 `.skill` 只包含：
+打包出来的 `.skill` 包含：
 - `openclaw-terse/SKILL.md`
 - `openclaw-terse/references/patch-patterns.md`
+- `openclaw-terse/references/gpt54-mitigation.md`
 
 ## 构建 / 校验
 
